@@ -1,4 +1,4 @@
-dia 26.59
+dia 26.6
 al 1
 bp 1
 PF 0
@@ -68,3 +68,6 @@ fun rat
 rat 22 mm
 vol 50
 dir inf
+
+phase 
+fun stp
