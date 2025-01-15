@@ -72,7 +72,7 @@ class Pump:
         
         # Auto-select volume units based on diameter if not specified
         if vol_units == '':
-            self.vol_units = 'mcL' if self.dia >= 14.0 else 'mL'
+            self.vol_units = 'mcL' if self.dia <= 14.0 else 'mL'
         else:
             if vol_units not in self.VALID_VOL_UNITS:
                 raise ValueError(f"vol_units must be one of {self.VALID_VOL_UNITS}")
@@ -96,7 +96,7 @@ class Pump:
         for pump in pumps:
             if not isinstance(pump, Pump):
                 raise TypeError("All arguments must be Pump objects")
-            pump.file.write(f"dia {pump.dia}\nal 1\nbp 1\nPF 0\n")
+            pump.file.write(f"dia {pump.dia}\nvol {pump.vol_units}\nal 1\nbp 1\nPF 0\n")
 
     def _phase_to_string(self, phase: Union[int, str]) -> str:
         """

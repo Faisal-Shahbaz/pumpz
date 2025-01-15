@@ -14,7 +14,7 @@ Based on: SyringePumpPro by Tim Burgess (https://SyringePumpPro.com)
 
 from .utilities import decompose_dict, factor_check
 
-class masterppl:
+class Masterppl:
     """
     Master PPL file handler for controlling multiple syringe pumps.
     

@@ -8,7 +8,7 @@ Below is documentation created by Claude AI:
 
 A Python package for controlling syringe pumps using the PPL pump programming language.
 
-Version: 0.2.0
+Version: 0.2.1
 
 Author: Faisal Shahbaz
 
@@ -22,14 +22,14 @@ import pumpz as pz
 
 ## Core Classes
 
-### `masterppl`
+### `Masterppl`
 
 A class for managing multiple pumps through a master PPL file.
 
 #### Constructor
 
 ```python
-masterppl(file, adrs=[])
+Masterppl(file, adrs=[])
 ```
 
 **Parameters:**
@@ -69,14 +69,14 @@ Quickly configure multiple pumps.
 - **Returns:** None
 - **Effect:** Adds all pumps, clears their configurations, and triggers beep
 
-### `pump`
+### `Pump`
 
 A class representing an individual syringe pump.
 
 #### Constructor
 
 ```python
-pump(file, dia: float, rate_units: str = 'mm', vol_units: str = '', time: float = 0)
+Pump(file, dia: float, rate_units: str = 'mm', vol_units: str = '', time: float = 0)
 ```
 
 **Parameters:**
@@ -300,7 +300,7 @@ with open('pump1.ppl', 'w') as pump_file:
 ```python
 # Control multiple pumps with synchronization
 with open('master.ppl', 'w') as master_file:
-    master = masterppl(master_file)
+    master = Masterppl(master_file)
     
     with open('pump1.ppl', 'w') as p1_file:
         p1 = Pump(p1_file, dia=14.0)
@@ -356,7 +356,7 @@ aq = pz.Pump(f_aq, 26.59, "mm", "mL")   # Pump for aqueous solution
 org = pz.Pump(f_org, 26.59, "mm", "mL")  # Pump for organic solution
 
 # Create master controller and configure both pumps
-master = pz.masterppl(f_master)
+master = pz.Masterppl(f_master)
 master.quickset({0: org, 1: aq})  # Assign addresses 0 and 1
 ```
 
